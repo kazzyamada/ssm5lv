@@ -22,3 +22,7 @@ Route::resource("entries","EntryController"); // Add this line in routes.php
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+// for simple api test
+Route::get('api/echo', "AppController@echo1");
+

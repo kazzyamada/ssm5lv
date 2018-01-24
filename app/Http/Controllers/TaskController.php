@@ -85,12 +85,14 @@ class TaskController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
+#        \Log::debug($request);
 		$task = Task::findOrFail($id);
 
 		$task->entries_id = $request->input("entries_id");
         $task->log = $request->input("log");
         $task->task_day = $request->input("task_day");
         $task->task_hour = $request->input("task_hour");
+#        \Debugbar::info($task->job_date);
 
 		$task->save();
 
