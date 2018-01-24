@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('header')
     <div class="page-header clearfix">
@@ -11,6 +11,9 @@
 @endsection
 
 @section('content')
+<div class="container">
+@yield('header')
+
     <div class="row">
         <div class="col-md-12">
             @if($tasks->count())
@@ -54,5 +57,6 @@
 
         </div>
     </div>
+</div>
 
 @endsection

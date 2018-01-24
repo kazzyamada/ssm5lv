@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('header')
 <div class="page-header">
         <h1>Tasks / Show #{{$task->id}}</h1>
@@ -14,6 +14,9 @@
 @endsection
 
 @section('content')
+<div class="container">
+@yield('header')
+
     <div class="row">
         <div class="col-md-12">
 
@@ -44,5 +47,6 @@
 
         </div>
     </div>
+</div>
 
 @endsection

@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource("tasks","TaskController"); // Add this line in routes.php
+Route::resource("entries","EntryController"); // Add this line in routes.php
+
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
