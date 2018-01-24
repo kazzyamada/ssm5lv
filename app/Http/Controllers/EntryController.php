@@ -7,6 +7,11 @@ use App\Entry;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller {
+    // constructor
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 	/**
 	 * Display a listing of the resource.
