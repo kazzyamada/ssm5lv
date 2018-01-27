@@ -21,14 +21,15 @@ class TasksDbTest extends TestCase
      * @return void
      * 
      * 参考https://qiita.com/zaburo/items/d665804f8ea850502c64
-     * リレーションをtasks.entries_id = entries.id なら簡単なのにね。
+     * リレーションをtasks.entry_id = entries.id なら簡単なのにね。
+     * ちょっと違う:-p
      */
     public function testTaskDb1()
     {
         $ra = Task::orderBy('id', 'asc')->paginate(1)->toArray();
-//        var_dump($ra['data'][0]);
+#        var_dump($ra['data'][0]);
         $this->assertEquals($ra['data'][0]['id'], 1);
-        $this->assertEquals($ra['data'][0]['entries_id'], 2);
+        $this->assertEquals($ra['data'][0]['entries_id'], 1);
         $tasks = Task::select()
                     ->join('entries', 'tasks.entries_id','=','entries.id')
                     ->orderBy('tasks.id','asc')
@@ -36,8 +37,9 @@ class TasksDbTest extends TestCase
                     ->first();    // こっちは1レコードなので$a['id']が返る
 
         $ra=$tasks->toArray();
+//        var_dump($ra);
 //        echo $ra['title']." ".$ra['log']."<br>\n";
-        $this->assertEquals($ra['title'],"shizuoka news paper");
+        $this->assertEquals($ra['title'],"title1");
 
         $tasks = Task::select()
                     ->join('entries', 'tasks.entries_id','=','entries.id')
@@ -47,7 +49,7 @@ class TasksDbTest extends TestCase
 
         $ra=$tasks->toArray();
 //        echo $ra[0]['title']." ".$ra[0]['log']."<br>\n";
-        $this->assertEquals($ra[0]['title'],"shizuoka news paper");
+        $this->assertEquals($ra[0]['title'],"title1");
     }
     /**
      * リレーションのテスト その2
@@ -56,32 +58,20 @@ class TasksDbTest extends TestCase
      * @return void
      * 
      * 参考https://qiita.com/zaburo/items/d665804f8ea850502c64
-     * リレーションをtasks.entries_id = entries.id なら簡単なのにね。
+     * リレーションをtasks.Entry_id = entries.id なら簡単なのにね。
      */
     public function testTaskDb2()
     {
-        $ra = Task::orderBy('id', 'asc')->paginate(1)->toArray();
-//        var_dump($ra['data'][0]);
-        $this->assertEquals($ra['data'][0]['id'], 1);
-        $this->assertEquals($ra['data'][0]['entries_id'], 2);
-        $tasks = Task::select()
-                    ->join('entries', 'tasks.entries_id','=','entries.id')
-                    ->orderBy('tasks.id','asc')
-//                    ->get();    //これなら$a[]['id']
-                    ->first();    // こっちは1レコードなので$a['id']が返る
+        $task = App\Task::find(1);
+        $r = $task->entry->title;
+        $this->assertEquals($r, 'title1');
+        $r = $task->log;;
+        $this->assertEquals($r, 'log1');
 
-        $ra=$tasks->toArray();
-//        echo $ra['title']." ".$ra['log']."<br>\n";
-        $this->assertEquals($ra['title'],"shizuoka news paper");
-
-        $tasks = Task::select()
-                    ->join('entries', 'tasks.entries_id','=','entries.id')
-                    ->orderBy('tasks.id','asc')
-                    ->get();    //これなら$a[]['id']
-//                    ->first();    // こっちは1レコードなので$a['id']が返る
-
-        $ra=$tasks->toArray();
-//        echo $ra[0]['title']." ".$ra[0]['log']."<br>\n";
-        $this->assertEquals($ra[0]['title'],"shizuoka news paper");
+        $task = App\Task::find(2);
+        $r = $task->entry->title;
+        $this->assertEquals($r, 'title2');
+        $r = $task->log;;
+        $this->assertEquals($r, 'log2');
     }
 }
