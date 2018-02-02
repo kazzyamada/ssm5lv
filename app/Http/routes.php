@@ -23,6 +23,9 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::resource('users', 'UserController'); // for User CRUD
+
+
 // for simple api test
 Route::get('api/echo', "AppController@echo1");
 

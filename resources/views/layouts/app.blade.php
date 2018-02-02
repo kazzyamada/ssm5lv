@@ -55,6 +55,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/entries') }}">Entries</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/users') }}">Users</a></li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
