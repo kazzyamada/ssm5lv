@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group @if($errors->has('email')) has-error @endif">
                        <label for="log-field">Email</label>
-                    <textarea class="form-control" id="email-field" rows="3" name="email">{{ is_null(old("email")) ? $user->email : old("email") }}</textarea>
+                    <input type="text"  class="form-control" id="email-field" rows="3" name="email" value="{{ is_null(old("email")) ? $user->email : old("email") }}"/>
                        @if($errors->has("email"))
                         <span class="help-block">{{ $errors->first("email") }}</span>
                        @endif

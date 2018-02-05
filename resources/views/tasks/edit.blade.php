@@ -12,7 +12,7 @@
 <div class="container">
 @yield('header')
 
-    @include('error')
+<!--    @include('error') -->
 
     <div class="row">
         <div class="col-md-12">

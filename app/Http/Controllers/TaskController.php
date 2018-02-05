@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Task;
+use Validator;
+
 use Illuminate\Http\Request;
 
 class TaskController extends Controller {
@@ -43,8 +45,17 @@ class TaskController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$task = new Task();
+        $validator = Validator::make($request->all(), [
+            'entries_id' => 'required|exists:entries,id',
+            'log' => 'required|max:255',
+            'task_day' => 'required',
+            'task_hour' => 'required',
+        ]);
+        if ($validator->fails()){
+            $this->throwValidationException($request, $validator);
+        }
 
+		$task = new Task();
 		$task->entries_id = $request->input("entries_id");
         $task->log = $request->input("log");
         $task->task_day = $request->input("task_day");
@@ -90,6 +101,15 @@ class TaskController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
+        $validator = Validator::make($request->all(), [
+            'entries_id' => 'required|exists:entries,id',
+            'log' => 'required|max:255',
+            'task_day' => 'required',
+            'task_hour' => 'required',
+        ]);
+        if ($validator->fails()){
+            $this->throwValidationException($request, $validator);
+        }
 #        \Log::debug($request);
 		$task = Task::findOrFail($id);
 
