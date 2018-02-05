@@ -46,7 +46,7 @@ class TaskController extends Controller {
 	public function store(Request $request)
 	{
         $validator = Validator::make($request->all(), [
-            'entries_id' => 'required|exists:entries,id',
+            'entries_id' => 'required|numeric|exists:entries,id',
             'log' => 'required|max:255',
             'task_day' => 'required',
             'task_hour' => 'required',
@@ -102,7 +102,7 @@ class TaskController extends Controller {
 	public function update(Request $request, $id)
 	{
         $validator = Validator::make($request->all(), [
-            'entries_id' => 'required|exists:entries,id',
+            'entries_id' => 'required|numeric|exists:entries,id',
             'log' => 'required|max:255',
             'task_day' => 'required',
             'task_hour' => 'required',

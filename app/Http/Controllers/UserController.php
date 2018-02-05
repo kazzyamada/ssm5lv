@@ -20,24 +20,6 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     /**
-     * Get a validator for an incoming registration request.
-     * 
-     * @param  array    $data
-     * @param  integer  $uid
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data, $uid)
-    {   
-        return Validator::make($data, [
-            'name' => 'required|max:255|unique:users,name,'.$uid.',id',
-            # 自分以外でuniq
-#            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users,email,'.$uid.',id',
-#            'email' => 'required|email|max:255',
-            'password' => 'min:6|confirmed',
-        ]);
-    }
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -126,7 +108,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 #        \Log::debug(LP.__LINE__.RP.C.__METHOD__);
-        $validator = $this->validator($request->all(), $id);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255|unique:users,name,'.$id.',id',
+            # 自分以外でuniq
+#            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,'.$id.',id',
+#            'email' => 'required|email|max:255',
+            'password' => 'min:6|confirmed',
+        ]);
         if ($validator->fails()){
             $this->throwValidationException($request, $validator);
         }
