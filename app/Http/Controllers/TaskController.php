@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use DB;
 use App\Task;
+use App\Entry;
 use Validator;
 
 use Illuminate\Http\Request;
@@ -34,7 +36,16 @@ class TaskController extends Controller {
 	 */
 	public function create()
 	{
-		return view('tasks.create');
+        $entries = DB::table('entries')->orderBy('id','desc')->get();
+#        $entries = Entry::pluck('title', 'id');    // for 5.3
+        $n=0;
+        foreach ($entries as $entry){
+            $entry->selected = '';
+            if ($n==0) $entry->selected = 'selected';
+            $n++;
+        }
+#        var_dump($entries);
+		return view('tasks.create', compact('entries'));
 	}
 
 	/**
@@ -89,7 +100,15 @@ class TaskController extends Controller {
 	{
 		$task = Task::findOrFail($id);
 
-		return view('tasks.edit', compact('task'));
+        $entries = DB::table('entries')->orderBy('id','desc')->get();
+        $n=0;
+        foreach ($entries as $entry){
+            $entry->selected = '';
+            if ($task->entries_id==$entry->id) $entry->selected = 'selected';
+            $n++;
+        }
+
+		return view('tasks.edit', compact('task'),compact('entries'));
 	}
 
 	/**

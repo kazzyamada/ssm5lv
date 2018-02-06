@@ -22,11 +22,14 @@
 
                 <div class="form-group @if($errors->has('entries_id')) has-error @endif">
                        <label for="entries_id-field">Entries_id</label>
-                    <input type="text" id="entries_id-field" name="entries_id" class="form-control" value="{{ old("entries_id") }}"/>
-                       @if($errors->has("entries_id"))
-                        <span class="help-block">{{ $errors->first("entries_id") }}</span>
-                       @endif
+                    <select class="form-control" name="entries_id">
+                       @foreach($entries as $entry)
+                       <option value="{{$entry->id}}" {{$entry->selected}}>{{$entry->title}}</option>
+                       @endforeach
+                    </select>
+            
                     </div>
+
                     <div class="form-group @if($errors->has('log')) has-error @endif">
                        <label for="log-field">Log</label>
                     <textarea class="form-control" id="log-field" rows="3" name="log">{{ old("log") }}</textarea>
