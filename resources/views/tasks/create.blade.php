@@ -24,7 +24,7 @@
                        <label for="entries_id-field">Entries_id</label>
                     <select class="form-control" name="entries_id">
                        @foreach($entries as $entry)
-                       <option value="{{$entry->id}}" {{$entry->selected}}>{{$entry->title}}</option>
+                       <option value="{{$entry->id}}" {{$entry->selected}}>{{$entry->id}}:{{$entry->title}}</option>
                        @endforeach
                     </select>
             
