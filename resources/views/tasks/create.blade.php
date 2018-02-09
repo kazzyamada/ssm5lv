@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
 @endsection
 @section('header')
     <div class="page-header">
@@ -9,8 +9,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-@yield('header')
 
 <!--    @include('error') -->
 
@@ -59,12 +57,14 @@
 
         </div>
     </div>
-</div>
+
 @endsection
 @section('scripts')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
   <script>
     $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true,
         format: "yyyy-mm-dd",
         language: 'ja'
     });

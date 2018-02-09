@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource("tasks","TaskController"); // Add this line in routes.php
 Route::resource("entries","EntryController"); // Add this line in routes.php
+Route::resource("days","DayController"); // Add this line in routes.php
 
 
 Route::auth();

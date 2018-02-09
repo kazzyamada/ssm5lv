@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 @section('header')
 <div class="page-header">
         <h1>Tasks / Show #{{$task->id}}</h1>
@@ -14,8 +14,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-@yield('header')
 
     <div class="row">
         <div class="col-md-12">
@@ -28,6 +26,10 @@
                 <div class="form-group">
                      <label for="entries_id">ENTRIES_ID</label>
                      <p class="form-control-static">{{$task->entries_id}}</p>
+                </div>
+                <div class="form-group">
+                     <label for="entry_title">ENTRY_TITLE</label>
+                     <p class="form-control-static">{{$task->entry->title}}</p>
                 </div>
                     <div class="form-group">
                      <label for="log">LOG</label>

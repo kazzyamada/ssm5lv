@@ -102,6 +102,7 @@ class TaskController extends Controller {
 
         $entries = DB::table('entries')->orderBy('id','desc')->get();
         $n=0;
+        // for select box
         foreach ($entries as $entry){
             $entry->selected = '';
             if ($task->entries_id==$entry->id) $entry->selected = 'selected';

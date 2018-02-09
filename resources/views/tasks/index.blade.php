@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('header')
     <div class="page-header clearfix">
@@ -11,8 +11,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-@yield('header')
 
     <div class="row">
         <div class="col-md-12">
@@ -59,6 +57,5 @@
 
         </div>
     </div>
-</div>
 
 @endsection

@@ -26,8 +26,8 @@
     </style>
 </head>
 <body id="app-layout">
+<div class="container">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -78,10 +78,13 @@
                     @endif
                 </ul>
             </div>
-        </div>
     </nav>
 
+    <!-- conten(start)t -->
     @yield('content')
+    <!-- conten(end)t -->
+
+</div> <!-- container -->
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
