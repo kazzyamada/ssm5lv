@@ -61,8 +61,10 @@
 @endsection
 @section('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.ja.min.js"></script>
   <script>
     $('.date-picker').datepicker({
+        todayBtn: "linked",
         autoclose: true,
         todayHighlight: true,
         format: "yyyy-mm-dd",
