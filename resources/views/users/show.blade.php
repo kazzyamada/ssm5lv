@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layout')
+
 @section('header')
 <div class="page-header">
         <h1>Users / Show #{{$user->id}}</h1>
@@ -14,8 +15,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-@yield('header')
 
     <div class="row">
         <div class="col-md-12">
@@ -42,6 +41,4 @@
 
         </div>
     </div>
-</div>
-
 @endsection

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Starter Template</title>
+    <title>SSM5</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <a class="navbar-brand" href="#">SSM</a>
+                <a class="navbar-brand" href="{{ url('/')}}">SSM5</a>
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
