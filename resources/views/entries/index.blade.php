@@ -48,7 +48,7 @@
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('entries.show', $entry->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{ trans('ui.view') }}</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('entries.edit', $entry->id) }}"><i class="glyphicon glyphicon-edit"></i> {{ trans('ui.edit') }}</a>
-                                    <form action="{{ route('entries.destroy', $entry->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('本当に削除しますか？')) { return true } else {return false };">
+                                    <form action="{{ route('entries.destroy', $entry->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('{{ trans('ui.areyousuredelete')}}')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> {{ trans('ui.delete') }}</button>

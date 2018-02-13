@@ -19,5 +19,6 @@ return [
     'delete' => '削除',
     'back' => '戻る',
     'save' => '保存',
+    'areyousuredelete' => '本当に削除しますか?',
 
 ];

@@ -19,5 +19,6 @@ return [
     'delete' => 'Delete',
     'back' => 'Back',
     'save' => 'Save',
+    'areyousuredelete' => 'are you sure delete?',
 
 ];
