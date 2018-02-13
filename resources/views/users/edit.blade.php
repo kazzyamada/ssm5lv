@@ -47,8 +47,8 @@
                        @endif
                     </div>
                 <div class="well well-sm">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a class="btn btn-link pull-right" href="{{ route('users.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+                    <button type="submit" class="btn btn-primary">{{ trans('ui.save') }}</button>
+                    <a class="btn btn-link pull-right" href="{{ route('users.index') }}"><i class="glyphicon glyphicon-backward"></i>  {{ trans('ui.back') }}</a>
                 </div>
             </form>
 
@@ -59,6 +59,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
   <script>
     $('.date-picker').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true,
         format: "yyyy-mm-dd",
         language: 'ja'
     });

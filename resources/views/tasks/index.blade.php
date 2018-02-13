@@ -4,7 +4,7 @@
     <div class="page-header clearfix">
         <h1>
             <i class="glyphicon glyphicon-align-justify"></i> Tasks
-            <a class="btn btn-success pull-right" href="{{ route('tasks.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
+            <a class="btn btn-success pull-right" href="{{ route('tasks.create') }}"><i class="glyphicon glyphicon-plus"></i> {{ trans('ui.create')}}</a>
         </h1>
 
     </div>
@@ -38,12 +38,12 @@
                     <td>{{$task->task_day}}</td>
                     <td>{{$task->task_hour}}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-xs btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
-                                    <a class="btn btn-xs btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? 本当に削除しますか?')) { return true } else {return false };">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{ trans('ui.view') }}</a>
+                                    <a class="btn btn-xs btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="glyphicon glyphicon-edit"></i> {{ trans('ui.edit') }}</a>
+                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('本当に削除しますか?')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> {{ trans('ui.delete') }}</button>
                                     </form>
                                 </td>
                             </tr>
