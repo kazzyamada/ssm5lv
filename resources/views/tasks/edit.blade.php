@@ -20,7 +20,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group @if($errors->has('entries_id')) has-error @endif">
-                       <label for="entries_id-field">Entries_id</label>
+                       <label for="entries_id-field">Entry_id</label>
                     <select class="form-control" name="entries_id">
                        @foreach($entries as $entry)
                        <option value="{{$entry->id}}" {{$entry->selected}}>{{$entry->id}}:{{$entry->title}}</option>
@@ -39,14 +39,14 @@
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('task_day')) has-error @endif">
-                       <label for="task_day-field">Task_day</label>
+                       <label for="task_day-field">Date</label>
                     <input type="text" id="task_day-field" name="task_day" class="form-control date-picker" value="{{ is_null(old("task_day")) ? $task->task_day : old("task_day") }}"/>
                        @if($errors->has("task_day"))
                         <span class="help-block">{{ $errors->first("task_day") }}</span>
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('task_hour')) has-error @endif">
-                       <label for="task_hour-field">Task_hour</label>
+                       <label for="task_hour-field">Hour</label>
                     <input type="text" id="task_hour-field" name="task_hour" class="form-control" value="{{ is_null(old("task_hour")) ? $task->task_hour : old("task_hour") }}"/>
                        @if($errors->has("task_hour"))
                         <span class="help-block">{{ $errors->first("task_hour") }}</span>

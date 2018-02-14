@@ -22,8 +22,8 @@
                             <th>ENTRY_ID</th>
                             <th>ENTRY</th>
                         <th>LOG</th>
-                        <th>TASK_DAY</th>
-                        <th>TASK_HOUR</th>
+                        <th>DATE</th>
+                        <th>HOUR</th>
                             <th class="text-right">OPTIONS</th>
                         </tr>
                     </thead>

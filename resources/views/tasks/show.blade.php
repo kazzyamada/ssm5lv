@@ -24,11 +24,11 @@
                     <p class="form-control-static"></p>
                 </div>
                 <div class="form-group">
-                     <label for="entries_id">ENTRIES_ID</label>
+                     <label for="entries_id">ENTRY_ID</label>
                      <p class="form-control-static">{{$task->entries_id}}</p>
                 </div>
                 <div class="form-group">
-                     <label for="entry_title">ENTRY_TITLE</label>
+                     <label for="entry_title">TITLE</label>
                      <p class="form-control-static">{{$task->entry->title}}</p>
                 </div>
                     <div class="form-group">
@@ -36,11 +36,11 @@
                      <p class="form-control-static">{{$task->log}}</p>
                 </div>
                     <div class="form-group">
-                     <label for="task_day">TASK_DAY</label>
+                     <label for="task_day">DATE</label>
                      <p class="form-control-static">{{$task->task_day}}</p>
                 </div>
                     <div class="form-group">
-                     <label for="task_hour">TASK_HOUR</label>
+                     <label for="task_hour">HOUR</label>
                      <p class="form-control-static">{{$task->task_hour}}</p>
                 </div>
             </form>
