@@ -4,9 +4,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use DB;
-use App\Task;
 use App\Entry;
+use App\Task;
 use Validator;
+define ("C", ':');
+define ("LP", "(");
+define ("RP", ")");
+
 
 use Illuminate\Http\Request;
 
@@ -16,6 +20,26 @@ class TaskController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    
+    public function selectedBoxTop($entries)
+    {
+        $n=0;
+        foreach ($entries as $entry){
+            $entry->selected = '';
+            if ($n==0) $entry->selected = 'selected';
+        }
+        return $entries;
+    }
+    public function selectedBox($entries, $id)
+    {
+        \Log::debug(LP.__LINE__.RP.C.__METHOD__."id=$id");
+        foreach ($entries as $entry){
+            $entry->selected = '';
+            if ($entry->id==$id) $entry->selected = 'selected';
+            if ($entry->id==$id) \Log::debug(LP.__LINE__.RP.C.__METHOD__."id=$id");
+        }
+        return $entries;
     }
 	/**
 	 * Display a listing of the resource.
@@ -38,14 +62,29 @@ class TaskController extends Controller {
 	{
         $entries = DB::table('entries')->orderBy('id','desc')->get();
 #        $entries = Entry::pluck('title', 'id');    // for 5.3
-        $n=0;
-        foreach ($entries as $entry){
-            $entry->selected = '';
-            if ($n==0) $entry->selected = 'selected';
-            $n++;
-        }
-#        var_dump($entries);
+
+        $entries=$this->selectedBoxTop($entries);
+//        var_dump($entries);
+
 		return view('tasks.create', compact('entries'));
+	}
+
+	/**
+	 * Show the form for copy form id and create a new resource.
+	 *
+	 * @return Response
+	 */
+	public function copy($id)
+	{
+
+#        \Log::debug('id='.$id);
+		$task = Task::findOrFail($id);
+
+        $entries = DB::table('entries')->orderBy('id','desc')->get();
+#        $entries = Entry::pluck('title', 'id');    // for 5.3
+        $entries=$this->selectedBox($entries, $task->entries_id);
+//        var_dump($entries);
+		return view('tasks.copy', compact('task'),compact('entries'));
 	}
 
 	/**
@@ -74,7 +113,7 @@ class TaskController extends Controller {
 
 		$task->save();
 
-		return redirect()->route('tasks.index')->with('message', 'Item created successfully.');
+		return redirect()->route('tasks.index')->with('message', trans('created'));
 	}
 
 	/**
@@ -101,13 +140,7 @@ class TaskController extends Controller {
 		$task = Task::findOrFail($id);
 
         $entries = DB::table('entries')->orderBy('id','desc')->get();
-        $n=0;
-        // for select box
-        foreach ($entries as $entry){
-            $entry->selected = '';
-            if ($task->entries_id==$entry->id) $entry->selected = 'selected';
-            $n++;
-        }
+        $entries=$this->selectedBox($entries, $task->entries_id);
 
 		return view('tasks.edit', compact('task'),compact('entries'));
 	}
@@ -141,7 +174,7 @@ class TaskController extends Controller {
 
 		$task->save();
 
-		return redirect()->route('tasks.index')->with('message', 'Item updated successfully.');
+		return redirect()->route('tasks.index')->with('message', trans('updated'));
 	}
 
 	/**
@@ -155,7 +188,7 @@ class TaskController extends Controller {
 		$task = Task::findOrFail($id);
 		$task->delete();
 
-		return redirect()->route('tasks.index')->with('message', 'Item deleted successfully.');
+		return redirect()->route('tasks.index')->with('message', trans('deleted'));
 	}
 
 }

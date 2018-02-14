@@ -39,6 +39,7 @@
                     <td>{{$task->task_hour}}</td>
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{ trans('ui.view') }}</a>
+                                    <a class="btn btn-xs btn-success" href="{{ route('tasks.copy', $task->id) }}"><i class="glyphicon glyphicon-plus"></i> {{ trans('ui.copy') }}</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="glyphicon glyphicon-edit"></i> {{ trans('ui.edit') }}</a>
                                     <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('{{ trans('ui.areyousuredelete')}}')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">

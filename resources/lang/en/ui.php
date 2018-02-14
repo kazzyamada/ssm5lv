@@ -16,9 +16,12 @@ return [
     'create' => 'Create',
     'view' => 'View',
     'edit' => 'Edit',
+    'copy' => 'Copy And Create',
     'delete' => 'Delete',
     'back' => 'Back',
     'save' => 'Save',
     'areyousuredelete' => 'are you sure delete?',
-
+    'updated' => 'updated successfully.',
+    'created' => 'created successfully.',
+    'deleted' => 'deleted successfully.',
 ];

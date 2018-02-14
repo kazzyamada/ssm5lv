@@ -16,9 +16,12 @@ return [
     'create' => '作成',
     'view' => '参照',
     'edit' => '編集',
+    'copy' => 'コピーして作成',
     'delete' => '削除',
     'back' => '戻る',
     'save' => '保存',
     'areyousuredelete' => '本当に削除しますか?',
-
+    'updated' => '更新しました.',
+    'created' => '作成しました.',
+    'deleted' => '削除しました.',
 ];
