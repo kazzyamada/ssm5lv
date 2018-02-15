@@ -16,7 +16,7 @@ return [
     'create' => 'Create',
     'view' => 'View',
     'edit' => 'Edit',
-    'copy' => 'Copy And Create',
+    'copy' => 'Copy & Create',
     'delete' => 'Delete',
     'back' => 'Back',
     'save' => 'Save',

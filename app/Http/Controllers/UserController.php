@@ -11,6 +11,7 @@ use Validator;
 define ("C", ':');
 define ("LP", "(");
 define ("RP", ")");
+define ("SP", " ");
 
 class UserController extends Controller
 {

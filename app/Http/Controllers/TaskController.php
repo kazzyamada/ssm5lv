@@ -10,6 +10,7 @@ use Validator;
 define ("C", ':');
 define ("LP", "(");
 define ("RP", ")");
+define ("SP", " ");
 
 
 use Illuminate\Http\Request;
@@ -33,11 +34,10 @@ class TaskController extends Controller {
     }
     public function selectedBox($entries, $id)
     {
-        \Log::debug(LP.__LINE__.RP.C.__METHOD__."id=$id");
+        \Log::debug(__METHOD__.LP.RP.C.LP.__LINE__.RP.SP."id=$id");
         foreach ($entries as $entry){
             $entry->selected = '';
             if ($entry->id==$id) $entry->selected = 'selected';
-            if ($entry->id==$id) \Log::debug(LP.__LINE__.RP.C.__METHOD__."id=$id");
         }
         return $entries;
     }
