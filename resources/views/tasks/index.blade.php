@@ -19,7 +19,6 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ENTRY_ID</th>
                             <th>ENTRY</th>
                         <th>LOG</th>
                         <th>DATE</th>
@@ -32,7 +31,6 @@
                         @foreach($tasks as $task)
                             <tr>
                                 <td>{{$task->id}}</td>
-                                <td>{{$task->entries_id}}</td>
                                 <td>{{$task->entry->title}}</td>
                     <td>{{$task->log}}</td>
                     <td>{{$task->task_day}}</td>
