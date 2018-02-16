@@ -7,11 +7,6 @@ use DB;
 use App\Entry;
 use App\Task;
 use Validator;
-define ("C", ':');
-define ("LP", "(");
-define ("RP", ")");
-define ("SP", " ");
-
 
 use Illuminate\Http\Request;
 
@@ -34,7 +29,7 @@ class TaskController extends Controller {
     }
     public function selectedBox($entries, $id)
     {
-        \Log::debug(__METHOD__.LP.RP.C.LP.__LINE__.RP.SP."id=$id");
+//        \Log::debug(__METHOD__.LP.RP.C.LP.__LINE__.RP.SP."id=$id");
         foreach ($entries as $entry){
             $entry->selected = '';
             if ($entry->id==$id) $entry->selected = 'selected';
@@ -191,4 +186,19 @@ class TaskController extends Controller {
 		return redirect()->route('tasks.index')->with('message', trans('deleted'));
 	}
 
+	/**
+	 * totaling
+	 *
+	 * @return Response
+	 */
+	public function total()
+	{
+        $sql ='select E.id, E.title, E.hour, sum(V.task_hour) as man_hour,E.hour-sum(V.task_hour) as remain,E.pre, E.end,E.status from entries as E, tasks as V where E.id = V.entries_id group by V.entries_id order by E.id,E.pre';
+        $sql2 ='E.id, E.title, E.hour, sum(V.task_hour) as man_hour,E.hour-sum(V.task_hour) as remain,E.pre, E.end,E.status from entries as E, tasks as V where E.id = V.entries_id group by V.entries_id order by E.id,E.pre';
+        $totals = DB::select($sql);
+#        var_dump($totals);
+        
+		return view('tasks.total', compact('totals'));
+
+	}
 }
