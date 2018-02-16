@@ -209,8 +209,8 @@ class TaskController extends Controller {
 #        var_dump($totals);
 #        どうやって足す？
         $obj = new \stdClass;
-        $obj->id = 0;
-        $obj->title = '';
+        $obj->id = '';
+        $obj->title = '--- totla ---';
         $obj->days = $day_total;
         $obj->hour = $job_hour;
         $obj->man_hour = $man_hour;
