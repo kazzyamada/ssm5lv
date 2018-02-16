@@ -3,7 +3,7 @@
 @section('header')
     <div class="page-header clearfix">
         <h1>
-            <i class="glyphicon glyphicon-align-justify"></i> Tasks / Total
+            <i class="glyphicon glyphicon-align-justify"></i> Total
         </h1>
 
     </div>
