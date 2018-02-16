@@ -193,7 +193,7 @@ class TaskController extends Controller {
 	 */
 	public function total()
 	{
-        $sql ='select E.id, E.title, E.hour, sum(V.task_hour) as man_hour,E.hour-sum(V.task_hour) as remain,E.pre, E.end,E.status from entries as E, tasks as V where E.id = V.entries_id group by V.entries_id order by E.id,E.pre';
+        $sql ='select E.id, E.title, E.hour, sum(V.task_hour) as man_hour,count(E.id) as days,E.hour-sum(V.task_hour) as remain,E.pre, E.end,E.status from entries as E, tasks as V where E.id = V.entries_id group by V.entries_id order by E.id,E.pre';
         $sql2 ='E.id, E.title, E.hour, sum(V.task_hour) as man_hour,E.hour-sum(V.task_hour) as remain,E.pre, E.end,E.status from entries as E, tasks as V where E.id = V.entries_id group by V.entries_id order by E.id,E.pre';
         $totals = DB::select($sql);
 #        var_dump($totals);
