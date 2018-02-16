@@ -210,7 +210,7 @@ class TaskController extends Controller {
 #        どうやって足す？
         $obj = new \stdClass;
         $obj->id = '';
-        $obj->title = '--- totla ---';
+        $obj->title = '--- total ---';
         $obj->days = $day_total;
         $obj->hour = $job_hour;
         $obj->man_hour = $man_hour;
