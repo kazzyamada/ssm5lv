@@ -19,8 +19,8 @@
                         <tr>
                         <th>id</th>
                         <th>title</th>
-                        <th>project_hour</th>
                         <th>project_days</th>
+                        <th>project_hour</th>
                         <th>man_hour</th>
                         <th>remain</th>
                         <th>start</th>
@@ -34,8 +34,8 @@
                         <tr>
                         <td>{{$total->id}}</td>
                         <td>{{$total->title}}</td>
-                        <td>{{$total->hour}}</td>
                         <td>{{$total->days}}</td>
+                        <td>{{$total->hour}}</td>
                         <td>{{$total->man_hour}}</td>
                         <td>{{$total->remain}}</td>
                         <td>{{$total->pre}}</td>
